@@ -21,12 +21,12 @@ jobs:
 
       # 生成静态文件
       - name: Build
-        run: pnpm install && pnpm run docs:build
+        run: npm install && npm run docs:build
 
       # 部署到 GitHub Pages
       - name: Deploy
         # 使用别人写好的一个 action
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: avinal/github-pages-deploy-action@v0.9
         with:
           # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
           ACCESS_TOKEN: ${{ secrets.FIG_ACCESS_TOKEN }}
