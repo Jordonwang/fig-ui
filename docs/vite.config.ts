@@ -6,7 +6,7 @@ import {alias} from '../scripts'
 
 export default defineConfig(async ({ command, mode }) => {
   return {
-    base: 'fig-ui',
+    base: './',
     server: {
       proxy: {
         '/assets': {
