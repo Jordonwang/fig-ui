@@ -27,16 +27,16 @@
    ```
    > zh-CN
       > components
-         > element-plus
-            > Data 数据展示 (对应侧边栏一级菜单)
-               > table.md（对应侧边栏二级菜单）
+         > fig-ui
+            > Button 数据展示 (对应侧边栏一级菜单)
+               > delete.md（对应侧边栏二级菜单）
    ```
 
 ## 三、demo组件引入
 
 组件文档按照对应的 ui框架 的对应组件文档的结构来正常编写即可，这里不再多做赘述。其中需要注意的点就是**如何导入对应的** `demo组件` 。
 
-由于在 docs 项目导入 **demo组件运行状态**、**源代码** 是通过插件实现，节省了很多人工成本，所以开发者需要遵循一定的使用规范。接下来以 `vc-element-plus` 为例进行讲解。
+由于在 docs 项目导入 **demo组件运行状态**、**源代码** 是通过插件实现，节省了很多人工成本，所以开发者需要遵循一定的使用规范。接下来以 `fig-ui` 为例进行讲解。
 
 ### 1. demo 高度
 由于使用 `iframe` 对 demo组件 进行包裹，所以需要手动设置 `iframe` 的高度（**字符串**）。不传默认为 `"320px"` 。
@@ -49,18 +49,18 @@
 ### 2. 组件加载、源代码导入
 组件加载、源码导入通过插件识别 `kebab case` 命名规范的 `sourceCode` 实现。
 
-属性配置：`sourceCode=element-plus:::table/table-custom-columns`
+属性配置：`sourceCode=fig-ui:::button/delete`
 
 属性讲解: 
 1. 通过 `:::` 进行 项目名 、 文件地址进行分割
-2. 分割得到项目名 `element-plus` 会采用 `element-plus` 对应的 dev端口。且会在 `element-plus` 项目中读取源代码。
-3. 分割得到路径 `table/table-custom-columns` ，插件会到**对应项目的 demo 目录下 读取源码文件**，并通过 `prismjs` 对源码进行高亮等处理。
-4. 注意 demo组件的 **文件名 需要和对应的 路由path 一致**（对应案例中的：`/table-custom-columns`）。插件会根据文件名拼接 dev 环境的 demo组件 访问地址。
+2. 分割得到项目名 `fig-ui` 会采用 `fig-ui` 对应的 dev端口。且会在 `fig-ui` 项目中读取源代码。
+3. 分割得到路径 `button/delete` ，插件会到**对应项目的 demo 目录下 读取源码文件**，并通过 `prismjs` 对源码进行高亮等处理。
+4. 注意 demo组件的 **文件名 需要和对应的 路由path 一致**（对应案例中的：`/delete`）。插件会根据文件名拼接 dev 环境的 demo组件 访问地址。
 
 可以看到 `sourceCode` 最终通过插件会得到个经过 `encode` 的 html 代码。
 ```html
 <vp-demo
     demo-height="270px"
-    source-code="element-plus:::table/table-custom-columns"
+    source-code="fig-ui:::button/delete"
 />
 ```
