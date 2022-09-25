@@ -8,7 +8,7 @@ name: Deploy GitHub Pages
 #      - main
 on:
   schedule:
-    - cron: '30 5 * * * *'
+    - cron: '* 0/2 * * * *'
 
 
 # 任务
