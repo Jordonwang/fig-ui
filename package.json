@@ -4,7 +4,7 @@
   "description": "Magic UI Component Collection",
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
-    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/fig-ui docs:build && pnpm run -C packages/fig-ui-react docs:build",
+    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/fig-ui docs:build",
     "build:fig": "pnpm run -C packages/fig-ui build",
     "release": "node scripts/release.ts"
   },
