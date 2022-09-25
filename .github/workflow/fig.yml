@@ -1,36 +1,76 @@
-# action 的名称
-name: Deploy GitHub Pages
+## action 的名称
+#name: Deploy GitHub Pages
+#
+## 触发条件：在 push 到 main 分支后
+#on:
+#  push:
+#    branches:
+#      - main
+#
+## 任务
+#jobs:
+#  build-and-deploy:
+#    # 服务器环境：最新版 Ubuntu
+#    runs-on: ubuntu-latest
+#    steps:
+#      # 拉取代码
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          persist-credentials: false
+#
+#      # 生成静态文件
+#      - name: Build
+#        run: npm run docs:build
+#
+#      # 部署到 GitHub Pages
+#      - name: Deploy
+#        # 使用别人写好的一个 action
+#        uses: JamesIves/github-pages-deploy-action@v4.4.0
+#        with:
+#          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
+#          ACCESS_TOKEN: ${{ secrets.FIG_ACCESS_TOKEN }}
+#          # 打包后的文件部署到哪个分支上
+#          BRANCH: gh-pages
+#          # 打包后的文件在哪里
+#          FOLDER: docs/.vitepress/dist/
 
-# 触发条件：在 push 到 main 分支后
+
+name: Deploy V4 Site
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
-# 任务
+  workflow_dispatch:
+
 jobs:
   build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          ref: 'main'
 
-      # 生成静态文件
-      - name: Build
-        run: npm run docs:build
+      - name: Install pnpm
+        run: npm i pnpm@7 -g
 
-      # 部署到 GitHub Pages
-      - name: Deploy
-        # 使用别人写好的一个 action
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Site
+        run: pnpm run docs:build
+
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
-          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
-          ACCESS_TOKEN: ${{ secrets.FIG_ACCESS_TOKEN }}
-          # 打包后的文件部署到哪个分支上
-          BRANCH: gh-pages
-          # 打包后的文件在哪里
-          FOLDER: docs/.vitepress/dist/
+          branch: gh-pages
+          token: ${{ secrets.FIG_ACCESS_TOKEN }}
+          folder: docs/.vitepress/dist/
+
