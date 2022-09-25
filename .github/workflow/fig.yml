@@ -2,10 +2,14 @@
 name: Deploy GitHub Pages
 
 # 触发条件：在 push 到 main 分支后
+#on:
+#  push:
+#    branches:
+#      - main
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '30 5 * * * *'
+
 
 # 任务
 jobs:
