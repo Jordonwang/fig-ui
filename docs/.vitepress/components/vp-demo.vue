@@ -57,7 +57,7 @@ import 'prismjs/themes/prism.css'
 const props = defineProps({
   libType: {
     type: String,
-    default: 'element-plus'
+    default: 'fig-ui'
   },
   iframeSrc: {
     type: String,
@@ -81,11 +81,9 @@ const decoded = computed(() => {
   return decodeURIComponent(props.sourceCode)
 })
 
+// 一级目录github子目录 二级目录子项目目录
 const baseUrl = {
-  'element-plus': import.meta.env.VITE_ELP_DEV_BASE,
-  'element-ui': import.meta.env.VITE_ELU_DEV_BASE,
-  'ant-design': import.meta.env.VITE_ANT_DEV_BASE,
-  'fig-ui': import.meta.env.VITE_FIG_DEV_BASE
+  'fig-ui': '/fig-ui' + import.meta.env.VITE_FIG_DEV_BASE
 }
 
 const iconColorArr = [{ name: '', color: '#fe5f57' }, { name: '', color: '#ffbc2d' }, { name: 'scale', color: '#27c83e' }]
