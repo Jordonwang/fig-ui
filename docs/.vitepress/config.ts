@@ -3,7 +3,7 @@ import nav from './configs/nav'
 import sidebar from './configs/sidebar'
 import footer from './configs/footer'
 
-const base = '/'
+const base = '/fig-ui/'
 
 export default defineConfig({
   title: 'FIG-UI',
