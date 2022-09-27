@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "description": "Magic UI Component Collection",
   "scripts": {
-    "clean-install": "pnpm clean && rm -rf ./{packages}/*/node_modules node_modules && pnpm i",
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/fig-ui docs:build",
     "build:fig": "pnpm run -C packages/fig-ui build",
     "release": "node scripts/release.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ui",
+    "vue",
+    "vite",
+    "vitepress",
+    "mobile",
+    "frontend",
+    "component",
+    "components"
+  ],
+  "author": "Jordonwang",
+  "license": "MIT",
   "dependencies": {
     "@types/node": "^18.0.3",
     "chalk": "^4.1.2",

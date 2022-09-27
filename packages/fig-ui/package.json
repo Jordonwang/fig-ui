@@ -1,16 +1,39 @@
 {
-  "name": "@jordon/fig-ui",
-  "version": "0.0.1-beta",
+  "name": "fig-ui-vue",
+  "version": "0.0.3-beta",
   "description": "Magic UI Component Collection",
   "main": "dist/fig-ui.cjs.js",
   "moudle": "dist/fig-ui.es.js",
+  "style": "dist/index.css",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "docs:build": "vite build --mode docs"
   },
-  "author": "",
-  "license": "ISC",
+  "files": ["dist"],
+  "keywords": [
+    "ui",
+    "vue",
+    "vite",
+    "mobile",
+    "frontend",
+    "component",
+    "components"
+  ],
+  "author": "Jordonwang",
+  "license": "MIT",
+  "homepage": "https://github.com/Jordonwang/fig-ui#readme",
+  "bugs": {
+    "url": "https://github.com/Jordonwang/fig-ui/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jordonwang/fig-ui",
+    "directory": "packages/fig-ui"
+  },
   "peerDependencies": {
     "vue": "^3.2.0"
   },
