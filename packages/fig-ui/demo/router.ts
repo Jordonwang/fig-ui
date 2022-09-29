@@ -4,9 +4,9 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: '/delete',
-      component: () => import('./button/delete.vue'),
-      name: 'TableCustomColumns'
+      path: '/delete-1',
+      component: () => import('./button/delete-1.vue'),
+      name: 'deleteV1'
     }
   ]
 })

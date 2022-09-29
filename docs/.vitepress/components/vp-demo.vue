@@ -30,17 +30,23 @@
         <el-icon class="option-item" @click="copyCode"><CopyDocument /></el-icon>
       </el-tooltip>
       <el-tooltip
+          content="查看组件调用代码"
+          placement="bottom"
+      >
+        <span class="option-item code-btn" @click="handleToggleCode(1)">&lt;/&gt;</span>
+      </el-tooltip>
+      <el-tooltip
           content="查看源码"
           placement="bottom"
       >
-        <span class="option-item code-btn" @click="handleToggleCode">&lt;/&gt;</span>
+        <span class="option-item code-btn code-origin" @click="handleToggleCode(2)">&lt;/&gt;</span>
       </el-tooltip>
     </div>
     <El-collapse-transition>
       <div class="source-code" v-if="isShowCode">
         <div class="decode" v-html="decoded" />
         <div class="hide-code-btn">
-          <el-button type="info" link :icon="CaretTop" @click="handleToggleCode">隐藏源代码</el-button>
+          <el-button type="info" link :icon="CaretTop" @click="handleToggleCode(0)">隐藏源代码</el-button>
         </div>
       </div>
     </El-collapse-transition>
@@ -71,29 +77,40 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  sourceCodeOrigin: {
+    type: String,
+    default: ''
+  },
   rawSource: {
     type: String,
     default: ''
   }
 })
 
-const decoded = computed(() => {
-  return decodeURIComponent(props.sourceCode)
-})
-
 // 一级目录github子目录 二级目录子项目目录
 const baseUrl = {
-  'fig-ui': '/fig-ui' + import.meta.env.VITE_FIG_DEV_BASE
+  'fig-ui': import.meta.env.VITE_FIG_DEV_BASE
 }
 
 const iconColorArr = [{ name: '', color: '#fe5f57' }, { name: '', color: '#ffbc2d' }, { name: 'scale', color: '#27c83e' }]
 
 const isFullScreen = ref(false)
 const isShowCode = ref(false)
+const showCodeType = ref(1)
+const decoded = computed(() => {
+  return decodeURIComponent(showCodeType.value === 1 ? props.sourceCode : props.sourceCodeOrigin)
+})
 
 const handleToggleFullScreen = () => isFullScreen.value = !isFullScreen.value
 
-const handleToggleCode = () => isShowCode.value = !isShowCode.value
+const handleToggleCode = (type) => {
+  if(type === 0) {
+    isShowCode.value = false
+    return
+  }
+  showCodeType.value = type
+  isShowCode.value = true
+}
 
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(props.rawSource),
@@ -194,6 +211,10 @@ export default {
     font-size: 12px;
     &:hover {
       color: var(--vp-c-text-1);
+    }
+
+    &.code-origin {
+      color: var(--vp-c-brand)
     }
   }
 }

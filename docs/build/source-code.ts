@@ -26,14 +26,22 @@ const sourceCode = () => {
       })
       const filesRes = await Promise.all(match)
 
+      const matchSourceCode = src.match(reg)?.map(_ => {
+        const [packageName, compPath] = sourceSplit(_)
+        const suffix = packageName.includes('ant') ? 'jsx' : 'vue'
+        return fsPromises.readFile(path.resolve(packagesPath, `${packageName}/components/${compPath}.${suffix}`), 'utf-8')
+      })
+      const SourceCodeFilesRes = await Promise.all(matchSourceCode)
+      
       let i = 0
       return src.replace(reg, (str) => {
         const [packageName, compPath] = sourceSplit(str)
         const compPathStrArr = compPath.split('/')
         const iframeSrc = compPathStrArr[compPathStrArr.length - 1]
         const file = filesRes[i]
+        const SourceCodeFile = SourceCodeFilesRes[i]
         i++
-        return `source-code="${encodeURIComponent(warp(Prism.highlight(file, Prism.languages.markup, 'markup')))}" raw-source="${encodeURIComponent(file)}" lib-type="${packageName}" iframe-src="${iframeSrc}"`
+        return `source-code-origin="${encodeURIComponent(warp(Prism.highlight(SourceCodeFile, Prism.languages.markup, 'markup')))}"  source-code="${encodeURIComponent(warp(Prism.highlight(file, Prism.languages.markup, 'markup')))}" raw-source="${encodeURIComponent(file)}" lib-type="${packageName}" iframe-src="${iframeSrc}"`
       })
     }
   }

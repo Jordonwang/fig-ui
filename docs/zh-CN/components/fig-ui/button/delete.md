@@ -4,7 +4,7 @@
 
 <vp-demo
     demo-height="160px"
-    source-code="fig-ui:::button/delete"
+    source-code="fig-ui:::button/delete-1"
 />
 
 ## 属性

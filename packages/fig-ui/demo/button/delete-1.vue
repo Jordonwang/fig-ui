@@ -17,6 +17,7 @@ const clickHandle = () => {
 .demo {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   > * {
     margin: 20px;
   }
