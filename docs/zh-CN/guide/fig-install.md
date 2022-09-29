@@ -12,13 +12,13 @@
 ### 1. 使用包管理器
 ```shell
 # NPM
-npm install fig-ui
+npm install fig-ui-vue
 
 # Yarn
-yarn install fig-ui
+yarn install fig-ui-vue
 
 # pnpm
-pnpm install fig-ui
+pnpm install fig-ui-vue
 ```
 
 ## 快速开始
@@ -28,7 +28,7 @@ pnpm install fig-ui
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import figUi from 'fig-ui'
+import figUi from 'fig-ui-vue'
 import 'fig-ui/dist/style.css'
 
 const app = createApp(App)
@@ -40,11 +40,11 @@ app.use(figUi)
 需要在使用组件的地方手动对 `fig-ui` 进行导入。
 ```html
 <template>
-  <button></button>
+  <componentName></componentName>
 </template>
 
 <script setup>
-  import { button } from 'fig-ui'
+  import { componentName } from 'fig-ui-vue'
 </script>
 ```
 

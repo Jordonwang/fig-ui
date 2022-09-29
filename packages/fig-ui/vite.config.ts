@@ -2,6 +2,7 @@ import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import {defineConfig} from 'vite'
 import {alias} from '../../scripts'
+const pathSrc = path.resolve(__dirname, './')
 
 export default defineConfig(async ({ command, mode }) => {
   let docsBuild = {}
@@ -11,9 +12,17 @@ export default defineConfig(async ({ command, mode }) => {
       outDir: '../../docs/.vitepress/dist/fig-ui'
     }
   }
+
   return {
     server: {
       port: '3255'
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "~/style/mixins.scss" as *;`,
+        },
+      },
     },
     plugins: [vue()],
     build: {
@@ -29,6 +38,7 @@ export default defineConfig(async ({ command, mode }) => {
     },
     resolve: {
       alias: {
+        '~/': `${pathSrc}/`,
         'fig-ui': path.join(__dirname, `/index`)
       }
     },

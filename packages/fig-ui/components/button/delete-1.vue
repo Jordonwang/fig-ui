@@ -49,8 +49,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use '../../style/mixins.scss' as *;
-
 @include b(button) {
     @include e(delete) {
         position: relative;

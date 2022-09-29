@@ -224,6 +224,9 @@ export default {
   border-top: 1px solid var(--vp-custom-block-details-border);
   .decode {
     padding: 0 16px;
+    /deep/pre {
+      overflow: auto;
+    }
   }
   .hide-code-btn {
     border-top: 1px solid var(--vp-custom-block-details-border);
