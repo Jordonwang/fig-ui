@@ -49,18 +49,18 @@
 ### 2. 组件加载、源代码导入
 组件加载、源码导入通过插件识别 `kebab case` 命名规范的 `sourceCode` 实现。
 
-属性配置：`sourceCode=fig-ui:::button/delete`
+属性配置：`sourceCode=fig-ui:::button/delete-1`
 
 属性讲解: 
 1. 通过 `:::` 进行 项目名 、 文件地址进行分割
 2. 分割得到项目名 `fig-ui` 会采用 `fig-ui` 对应的 dev端口。且会在 `fig-ui` 项目中读取源代码。
-3. 分割得到路径 `button/delete` ，插件会到**对应项目的 demo 目录下 读取源码文件**，并通过 `prismjs` 对源码进行高亮等处理。
+3. 分割得到路径 `button/delete-1` ，插件会到**对应项目的 demo 目录下 读取源码文件**，并通过 `prismjs` 对源码进行高亮等处理。
 4. 注意 demo组件的 **文件名 需要和对应的 路由path 一致**（对应案例中的：`/delete`）。插件会根据文件名拼接 dev 环境的 demo组件 访问地址。
 
 可以看到 `sourceCode` 最终通过插件会得到个经过 `encode` 的 html 代码。
 ```html
 <vp-demo
     demo-height="270px"
-    source-code="fig-ui:::button/delete"
+    source-code="fig-ui:::button/delete-1"
 />
 ```

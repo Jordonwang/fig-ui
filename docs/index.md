@@ -11,7 +11,7 @@ hero:
       link: /zh-CN/guide/fig-install
     - theme: brand
       text:  组件文档
-      link: /zh-CN/components/fig-ui/button/delete
+      link: /zh-CN/components/fig-ui/button/delete-1
     - theme: alt
       text:  掘金主页
       link: https://juejin.cn/user/3378115131237863/posts
